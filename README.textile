@@ -1,0 +1,43 @@
+h1. SVStatusHUD
+
+SVStatusHUD mimicks the HUD shown on orientation lock, mute and volume change on iOS. *It should only be used in response to hardware or other important notifications* (for instance when an accessory is detected by your app). If you're just looking to show the progress or success of an operation, you should have a look at "SVProgressHUD":https://github.com/samvermette/SVProgressHUD.
+
+
+!http://f.cl.ly/items/0L0B0F2W0x0m233F0R08/svstatushud.png!
+
+SVStatusHUD features:
+
+* simple singleton convenience methods (@[SVStatus method]@)
+* automatic styling of the image it's provided
+* optional status string and showing duration
+* automatic positioning based on device type and orientation
+
+h2. Installation
+
+* Drag the @SVStatusHUD/SVStatusHUD@ folder into your project. 
+* Add the *QuartzCore* framework to your project. 
+
+__If you plan on using SVStatusHUD in a lot of places inside your app, I recommend importing it directly inside your prefix file.__
+
+h2. Usage
+
+(see sample Xcode project in @/Demo@)
+
+SVStatusHUD is created as a singleton (i.e. it doesn't need to be explicitly allocated and instantiated; you directly call @[SVStatusHUD method]@) and can be shown using one of the following convenience/class methods:
+
+<pre>
++ (void)showWithImage:(UIImage*)image;
++ (void)showWithImage:(UIImage*)image status:(NSString*)string;
++ (void)showWithImage:(UIImage*)image status:(NSString*)string duration:(NSTimeInterval)duration;
+</pre>
+
+*Important*: for crispier rendering, provided image should precisely be 86x86 pixels (retina: 172x172).
+
+
+h2. Automatic Referencing counting (ARC) support
+
+SVStatusHUD doesn't support ARC out of the box. You can disable ARC on a per-file basis by adding the @-fno-objc-arc@ compiler flag for those files (see "this StackOverflow thread":http://stackoverflow.com/questions/6646052/how-can-i-disable-arc-for-a-single-file-in-a-project for reference). Anyone who loves ARC enough to add it to SVStatusHUD is welcome to open a pull request and I'll be happy to create a new ARC branch.
+
+h2. Credits
+
+SVStatusHUD is brought to you by "Sam Vermette":http://samvermette.com and "contributors to the project":https://github.com/samvermette/SVStatusHUD/contributors. If you have feature suggestions or bug reports, feel free to help out by sending pull requests or by "creating new issues":https://github.com/samvermette/SVStatusHUD/issues/new. If you're using SVStatusHUD in your project, attribution would be nice.
