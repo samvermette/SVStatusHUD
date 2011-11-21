@@ -1,9 +1,9 @@
 h1. SVStatusHUD
 
-SVStatusHUD mimicks the HUD shown on orientation lock, mute and volume change on iOS. *It should only be used in response to hardware or other important notifications* (for instance when an accessory is detected by your app). If you're just looking to show the progress or success of an operation, you should have a look at "SVProgressHUD":https://github.com/samvermette/SVProgressHUD.
+SVStatusHUD mimics the HUD shown on orientation lock, mute and volume change on iOS. *It should only be used in response to hardware or other important notifications* (for instance when an accessory is detected by your app). If you're just looking to show the progress or success of an operation, you should have a look at "SVProgressHUD":https://github.com/samvermette/SVProgressHUD.
 
 
-!http://f.cl.ly/items/3U3b343X0e3x2Y2a0N2x/screenshots.png!
+!http://f.cl.ly/items/1p1d1x3b2b1V2y1Q3p0C/screenshots.png!
 __Glyph icons kindly provided by "@jpmartineau":http://twitter.com/jpmartineau for the sake of showing appropriate use cases.__
 
 
