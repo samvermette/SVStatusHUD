@@ -259,7 +259,7 @@ static SVStatusHUD *sharedView = nil;
 - (UILabel *)stringLabel {
     
     if (stringLabel == nil) {
-        stringLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 120, 160, 20)];
+        stringLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 123, 160, 20)];
 		stringLabel.textColor = [UIColor whiteColor];
 		stringLabel.backgroundColor = [UIColor clearColor];
 		stringLabel.adjustsFontSizeToFitWidth = YES;
