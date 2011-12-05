@@ -32,8 +32,6 @@
 
 - (void)dismiss;
 
-- (void)memoryWarning:(NSNotification*)notification;
-
 @end
 
 
@@ -56,18 +54,6 @@ static SVStatusHUD *sharedView = nil;
     
     [super dealloc];
 }
-
-- (void)memoryWarning:(NSNotification *)notification {
-	
-    if(sharedView.superview == nil) {
-        [[NSNotificationCenter defaultCenter] removeObserver:self];
-        [sharedView release], sharedView = nil;
-        [hudView release], hudView = nil;
-        [stringLabel release], stringLabel = nil;
-        [imageView release], imageView = nil;
-    }
-}
-
 
 + (SVStatusHUD*)sharedView {
 	
@@ -169,11 +155,6 @@ static SVStatusHUD *sharedView = nil;
                                              selector:@selector(positionHUD:) 
                                                  name:UIApplicationDidChangeStatusBarOrientationNotification 
                                                object:nil];  
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(memoryWarning:) 
-                                                 name:UIApplicationDidReceiveMemoryWarningNotification
-                                               object:nil];
 }
 
 
