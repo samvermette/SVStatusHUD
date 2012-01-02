@@ -20,10 +20,10 @@
 @interface SVStatusHUD ()
 
 @property (nonatomic, retain) NSTimer *fadeOutTimer;
+@property (nonatomic, readonly) UIWindow *overlayWindow;
 @property (nonatomic, readonly) UIView *hudView;
 @property (nonatomic, readonly) UILabel *stringLabel;
 @property (nonatomic, readonly) SVStatusImage *imageView;
-@property (nonatomic, assign) UIWindow *previousKeyWindow;
 
 - (void)showWithImage:(UIImage*)image status:(NSString*)string duration:(NSTimeInterval)duration;
 - (void)setStatus:(NSString*)string;
@@ -37,7 +37,7 @@
 
 @implementation SVStatusHUD
 
-@synthesize hudView, fadeOutTimer, stringLabel, imageView, previousKeyWindow;
+@synthesize overlayWindow, hudView, fadeOutTimer, stringLabel, imageView;
 
 static SVStatusHUD *sharedView = nil;
 
@@ -88,6 +88,7 @@ static SVStatusHUD *sharedView = nil;
 - (id)initWithFrame:(CGRect)frame {
 	
     if ((self = [super initWithFrame:frame])) {
+        [self.overlayWindow addSubview:self];
         self.backgroundColor = [UIColor clearColor];
         self.userInteractionEnabled = NO;
 		self.alpha = 0;
@@ -120,20 +121,7 @@ static SVStatusHUD *sharedView = nil;
 	self.imageView.image = image;
     
 	[self setStatus:string];
-    
-    if(![self isKeyWindow]) {
-        
-        [[UIApplication sharedApplication].windows enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            UIWindow *window = (UIWindow*)obj;
-            if(window.windowLevel == UIWindowLevelNormal && ![[window class] isEqual:[SVStatusHUD class]]) {
-                self.previousKeyWindow = window;
-                *stop = YES;
-            }
-        }];
-        
-        [self makeKeyAndVisible];
-    }
-    
+    [self.overlayWindow makeKeyAndVisible];
     [self positionHUD:nil];
     
 	if(self.alpha != 1) {
@@ -211,7 +199,7 @@ static SVStatusHUD *sharedView = nil;
 					 completion:^(BOOL finished){ 
                          if(sharedView.alpha == 0) {
                              [[NSNotificationCenter defaultCenter] removeObserver:sharedView];
-                             [sharedView.previousKeyWindow makeKeyWindow];
+                             [self.overlayWindow release];
                              [sharedView release], sharedView = nil;
                              
                              // uncomment to make sure UIWindow is gone from app.windows
@@ -222,8 +210,17 @@ static SVStatusHUD *sharedView = nil;
 
 #pragma mark - Getters
 
+- (UIWindow *)overlayWindow {
+    if(!overlayWindow) {
+        overlayWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        overlayWindow.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        overlayWindow.backgroundColor = [UIColor clearColor];
+        overlayWindow.userInteractionEnabled = NO;
+    }
+    return overlayWindow;
+}
+
 - (UIView *)hudView {
-    
     if(!hudView) {
         hudView = [[UIView alloc] initWithFrame:CGRectZero];
         hudView.layer.cornerRadius = 10;
@@ -233,12 +230,10 @@ static SVStatusHUD *sharedView = nil;
         
         [self addSubview:hudView];
     }
-    
     return hudView;
 }
 
 - (UILabel *)stringLabel {
-    
     if (stringLabel == nil) {
         stringLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 123, 160, 20)];
 		stringLabel.textColor = [UIColor whiteColor];
@@ -252,12 +247,10 @@ static SVStatusHUD *sharedView = nil;
         stringLabel.numberOfLines = 0;
 		[self.hudView addSubview:stringLabel];
     }
-    
     return stringLabel;
 }
 
 - (SVStatusImage *)imageView {
-    
     if (imageView == nil) {
         imageView = [[SVStatusImage alloc] initWithFrame:CGRectMake(0, 0, 86, 86)];
         imageView.backgroundColor = [UIColor clearColor];
@@ -267,7 +260,6 @@ static SVStatusHUD *sharedView = nil;
         imageView.layer.shadowOffset = CGSizeMake(0, 1);
 		[self.hudView addSubview:imageView];
     }
-    
     return imageView;
 }
 

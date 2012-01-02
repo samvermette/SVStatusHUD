@@ -12,7 +12,7 @@
 #define SVStatusHUDVisibleDuration 1.5f
 #define SVStatusHUDFadeOutDuration 1.0f
 
-@interface SVStatusHUD : UIWindow
+@interface SVStatusHUD : UIView
 
 + (void)showWithImage:(UIImage*)image;
 + (void)showWithImage:(UIImage*)image status:(NSString*)string;
