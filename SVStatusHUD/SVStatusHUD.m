@@ -10,6 +10,9 @@
 #import "SVStatusHUD.h"
 #import <QuartzCore/QuartzCore.h>
 
+#define SVStatusHUDVisibleDuration 1.0f
+#define SVStatusHUDFadeOutDuration 1.0f
+
 @interface SVStatusImage : UIView
 
 @property (nonatomic, retain) UIImage *image;
@@ -71,11 +74,11 @@ static SVStatusHUD *sharedView = nil;
 #pragma mark - Show Methods
 
 + (void)showWithImage:(UIImage*)image {
-    [SVStatusHUD showWithImage:image status:nil duration:1];
+    [SVStatusHUD showWithImage:image status:nil duration:SVStatusHUDVisibleDuration];
 }
 
 + (void)showWithImage:(UIImage*)image status:(NSString*)string {
-    [SVStatusHUD showWithImage:image status:string duration:1];
+    [SVStatusHUD showWithImage:image status:string duration:SVStatusHUDVisibleDuration];
 }
 
 + (void)showWithImage:(UIImage*)image status:(NSString*)string duration:(NSTimeInterval)duration {
@@ -132,7 +135,7 @@ static SVStatusHUD *sharedView = nil;
     if(fadeOutTimer != nil)
 		[fadeOutTimer invalidate], [fadeOutTimer release], fadeOutTimer = nil;
 	
-	fadeOutTimer = [[NSTimer scheduledTimerWithTimeInterval:SVStatusHUDVisibleDuration target:self selector:@selector(dismiss) userInfo:nil repeats:NO] retain];
+	fadeOutTimer = [[NSTimer scheduledTimerWithTimeInterval:duration target:self selector:@selector(dismiss) userInfo:nil repeats:NO] retain];
     
     [self setNeedsDisplay];
 }

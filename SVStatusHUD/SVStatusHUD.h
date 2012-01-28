@@ -9,9 +9,6 @@
 
 #import <UIKit/UIKit.h>
 
-#define SVStatusHUDVisibleDuration 1.5f
-#define SVStatusHUDFadeOutDuration 1.0f
-
 @interface SVStatusHUD : UIView
 
 + (void)showWithImage:(UIImage*)image;
