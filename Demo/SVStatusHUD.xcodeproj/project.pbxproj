@@ -16,6 +16,7 @@
 		223995FF1474EE800014BBEF /* SVStatusHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 223995FE1474EE800014BBEF /* SVStatusHUD.m */; };
 		223996011474F06F0014BBEF /* wifi.png in Resources */ = {isa = PBXBuildFile; fileRef = 223996001474F06F0014BBEF /* wifi.png */; };
 		2265DEEE14706A8900B3EBF7 /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = 2265DEED14706A8900B3EBF7 /* README.textile */; };
+		2270BE921642F670005CDBB4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2270BE911642F670005CDBB4 /* Default-568h@2x.png */; };
 		229256BA14776CF9008F8972 /* wifi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 229256B814776CF9008F8972 /* wifi@2x.png */; };
 		229256BB14776CF9008F8972 /* sync@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 229256B914776CF9008F8972 /* sync@2x.png */; };
 		22EBCD19134128130074B281 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22EBCD18134128130074B281 /* MainWindow-iPad.xib */; };
@@ -37,6 +38,7 @@
 		223995FE1474EE800014BBEF /* SVStatusHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVStatusHUD.m; sourceTree = "<group>"; };
 		223996001474F06F0014BBEF /* wifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wifi.png; path = Classes/wifi.png; sourceTree = "<group>"; };
 		2265DEED14706A8900B3EBF7 /* README.textile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.textile; path = ../README.textile; sourceTree = "<group>"; };
+		2270BE911642F670005CDBB4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		229256B814776CF9008F8972 /* wifi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wifi@2x.png"; path = "Classes/wifi@2x.png"; sourceTree = "<group>"; };
 		229256B914776CF9008F8972 /* sync@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sync@2x.png"; path = "Classes/sync@2x.png"; sourceTree = "<group>"; };
 		22EBCD18134128130074B281 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				2270BE911642F670005CDBB4 /* Default-568h@2x.png */,
 				2265DEED14706A8900B3EBF7 /* README.textile */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				223995FC1474EE800014BBEF /* SVStatusHUD */,
@@ -211,6 +214,7 @@
 				223996011474F06F0014BBEF /* wifi.png in Resources */,
 				229256BA14776CF9008F8972 /* wifi@2x.png in Resources */,
 				229256BB14776CF9008F8972 /* sync@2x.png in Resources */,
+				2270BE921642F670005CDBB4 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
