@@ -124,7 +124,7 @@ static SVStatusHUD *sharedView = nil;
 	self.imageView.image = image;
     
 	[self setStatus:string];
-    [self.overlayWindow makeKeyAndVisible];
+    [self.overlayWindow setHidden:NO];
     [self positionHUD:nil];
     
 	if(self.alpha != 1) {
@@ -202,10 +202,9 @@ static SVStatusHUD *sharedView = nil;
 					 completion:^(BOOL finished){ 
                          if(sharedView.alpha == 0) {
                              [[NSNotificationCenter defaultCenter] removeObserver:sharedView];
+                             [overlayWindow removeFromSuperview];
                              [overlayWindow release], overlayWindow = nil;
                              [sharedView release], sharedView = nil;
-                             
-                             [[UIApplication sharedApplication].windows.lastObject makeKeyAndVisible];
                              
                              // uncomment to make sure UIWindow is gone from app.windows
                              //NSLog(@"%@", [UIApplication sharedApplication].windows);
